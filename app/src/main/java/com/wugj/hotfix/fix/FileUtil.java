@@ -1,4 +1,4 @@
-package com.wugj.hotfix;
+package com.wugj.hotfix.fix;
 
 import android.content.Context;
 import android.os.Environment;
@@ -9,10 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 
-import static com.wugj.hotfix.Contacts.DEX_FILE_E;
-import static com.wugj.hotfix.Contacts.FIX_DEX_PATH;
+import static com.wugj.hotfix.fix.Contacts.DEX_FILE_E;
+import static com.wugj.hotfix.fix.Contacts.FIX_DEX_PATH;
 
 /**
  * description:

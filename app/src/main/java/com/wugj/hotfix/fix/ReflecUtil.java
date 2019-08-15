@@ -1,4 +1,4 @@
-package com.wugj.hotfix;
+package com.wugj.hotfix.fix;
 
 import java.lang.reflect.Field;
 

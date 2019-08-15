@@ -3,6 +3,8 @@ package com.wugj.hotfix;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.wugj.hotfix.dex.ChangeClass;
+
 /**
  * description:
  * </br>
@@ -12,10 +14,11 @@ import android.widget.Toast;
  * </br>
  * version:
  */
+@ChangeClass
 public class Calculater {
     public void calculate(Context context){
         int a = 666;
-        int b = 1;
+        int b = 2;
         Toast.makeText(context, "aaa"+(a/b), Toast.LENGTH_SHORT).show();
     }
 }

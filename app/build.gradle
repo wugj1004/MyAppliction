@@ -16,7 +16,7 @@ android {
         //拆包配置主dex中包含的class
         multiDexKeepFile file('multidex.keep')
         //拆包后代码混淆
-        multiDexKeepProguard file('multidex-config.pro')
+//        multiDexKeepProguard file('multidex-config.pro')
     }
 
     buildTypes {
@@ -40,7 +40,7 @@ android {
                 //强制拆分dex，此项添加后主dex文件中只包含-main-dex-list列表中class
                 '--minimal-main-dex',
                 //每个Dex文件中的最大id数/每个包内方法数上限
-                '--set-max-idx-number=30000'
+                '--set-max-idx-number=48000'
         ]
     }
 
@@ -52,14 +52,14 @@ android {
 //            if (dx.additionalParameters == null) {
 //                dx.additionalParameters = []
 //            }
-//            //enable multidex
-//            dx.additionalParameters += '--multi-dex'
+//            enable multidex
+////            dx.additionalParameters += '--multi-dex'
 //            // 设置multidex.keep文件中class为第一个dex文件中包含的class，如果没有下一项设置此项无作用
 //            dx.additionalParameters += "--main-dex-list=$projectDir/multidex.keep".toString()
 //            //强制拆分dex，此项添加后主dex文件中只包含-main-dex-list列表中class
 //            dx.additionalParameters += '--minimal-main-dex'
 //            //每个Dex文件中的最大id数/每个包内方法数上限
-//            dx.additionalParameters += '--set-max-idx-number=50000'
+//            dx.additionalParameters += '--set-max-idx-number=48000'
 //        }
 //    }
 }

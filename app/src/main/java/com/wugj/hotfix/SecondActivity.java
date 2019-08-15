@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
+
+import com.wugj.hotfix.fix.FileUtil;
+import com.wugj.hotfix.fix.FixDexUtil;
 
 import java.io.FileNotFoundException;
 

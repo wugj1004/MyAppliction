@@ -2,12 +2,15 @@ package com.wugj.hotfix;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+
+import com.wugj.hotfix.dex.ChangeClass;
 
 /**
  * description:
@@ -18,6 +21,8 @@ import android.view.View;
  * </br>
  * version:
  */
+
+@ChangeClass
 public class MainActivity extends Activity {
 
     @Override
@@ -34,6 +39,7 @@ public class MainActivity extends Activity {
             }
         }
 
+        new Calculater().calculate(this);
     }
 
     public void jump(View view){

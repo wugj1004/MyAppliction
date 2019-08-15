@@ -1,15 +1,12 @@
-package com.wugj.hotfix;
+package com.wugj.hotfix.fix;
 
 import android.content.Context;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.Map;
 
 import dalvik.system.DexClassLoader;
 import dalvik.system.PathClassLoader;
-
-import static com.wugj.hotfix.Contacts.FIX_DEX_PATH;
 
 /**
  * description:
@@ -33,7 +30,6 @@ public class FixDexUtil {
         if (context == null) return;
         //这里重要否则无法获取安装包下dex
         File fixDexFile = context.getDir(Contacts.FIX_DEX_PATH, Context.MODE_PRIVATE);
-
         File[] files = fixDexFile.listFiles();
 
         for (File file : files) {
