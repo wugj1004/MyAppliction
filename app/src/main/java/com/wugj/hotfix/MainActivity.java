@@ -2,7 +2,6 @@ package com.wugj.hotfix;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -10,7 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.wugj.hotfix.dex.ChangeClass;
+import mydex.wugj.com.annonation.MyAnnotation;
+
 
 /**
  * description:
@@ -22,7 +22,7 @@ import com.wugj.hotfix.dex.ChangeClass;
  * version:
  */
 
-@ChangeClass
+@MyAnnotation("Hello Annotation")
 public class MainActivity extends Activity {
 
     @Override
@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
     }
+
 
 
 

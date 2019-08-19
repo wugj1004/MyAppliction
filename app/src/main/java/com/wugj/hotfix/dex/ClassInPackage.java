@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import mydex.wugj.com.annonation.MyAnnotation;
 
+@MyAnnotation("Class")
 public class ClassInPackage {
 
     /**

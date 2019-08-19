@@ -1,6 +1,7 @@
-package com.wugj.hotfix.dex;
+package com.wugj.hotfix;
 
-import java.lang.annotation.Documented;
+import android.support.annotation.IntDef;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,14 +12,16 @@ import java.lang.annotation.Target;
  * </br>
  * author: wugj
  * </br>
- * date: 2019/8/15
+ * date: 2019/8/16
  * </br>
  * version:
  */
 
-@Documented
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ChangeClass {
-    String value() default "version";
+
+
+@Target({ElementType.PARAMETER})
+@Retention(RetentionPolicy.SOURCE)
+@IntDef({1,2})
+public @interface Status {
+
 }
