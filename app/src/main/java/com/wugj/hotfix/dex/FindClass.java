@@ -23,7 +23,9 @@ import dalvik.system.DexFile;
  * </br>
  * version:
  */
+@Deprecated
 public class FindClass {
+
 
 
     private static Field field(String className , String fieldName){
@@ -40,9 +42,17 @@ public class FindClass {
         return null;
     }
 
+
+    /**
+     * 返回安装包下所有DexFile集合
+     * @param context
+     * @return
+     */
     private static Collection<DexFile> getDexFiles(Context context){
 
+        //DexFile集合
         Set<DexFile> files = new LinkedHashSet<>();
+
         try {
             BaseDexClassLoader classLoader = (BaseDexClassLoader) context.getClassLoader();
             Field pathListField = field("dalvik.system.BaseDexClassLoader", "pathList");
@@ -67,15 +77,21 @@ public class FindClass {
         return files;
     }
 
-
-
+    /**
+     * 获取DexFile中所有的class名称
+     * @param df
+     * @param context
+     * @return
+     */
     public static List<String> getClassName(DexFile df,Context context) {
         List<String> classNameList = new ArrayList<>();
-        Enumeration<String> enumeration = df.entries();//获取df中的元素  这里包含了所有可执行的类名 该类名包含了包名+类名的方式
+        //获取df中的元素  这里包含了所有可执行的类名 该类名包含了包名+类名的方式
+        Enumeration<String> enumeration = df.entries();
         while (enumeration.hasMoreElements()) {//遍历
-            String className = (String) enumeration.nextElement();
+            String className = enumeration.nextElement();
 
-            if (className.contains(context.getPackageName())) {//在当前所有可执行的类里面查找包含有该包名的所有类
+            //在当前所有可执行的类里面查找包含有该包名的所有类
+            if (className.contains(context.getPackageName())) {
                 classNameList.add(className);
             }
         }
@@ -83,20 +99,25 @@ public class FindClass {
     }
 
 
+    /**
+     * 便利所有'Class<?>' 获取ChangeClass标注的类，
+     * @param context
+     */
     public static void getChangeClass(Context context){
 
+        //获取所有dex
         Set<DexFile> dexFiles = (Set) getDexFiles(context);
 
         for (DexFile file : dexFiles){
+            //获取所有class名
             List<String> classNameList = getClassName(file,context);
 
             try {
                 for (String str : classNameList) {
+
+                    //当前类是否是ChangeClass注解标注
                     Class<?> clazz = Class.forName(str);
-
-
                     ChangeClass changeClass = clazz.getAnnotation(ChangeClass.class);
-
                     if (changeClass != null) {
                         Log.e("打印修改的class", str);
                     }

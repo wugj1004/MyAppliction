@@ -8,19 +8,15 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import mydex.wugj.com.annonation.MyAnnotation;
 
-@MyAnnotation("Class")
+@Deprecated
 public class ClassInPackage {
 
     /**
-     * 获得包下面的所有的class
-     *
-     * @param
-     *
-     * @return List包含所有class的实例
+     * 获得当前包下的所有的class；List包含所有class的实例
+     * @param packageName
+     * @return
      */
-
     public static List<Class<?>> getClasssFromPackage(String packageName) {
         List<Class<?>> clazzs = new ArrayList<>();
         // 是否循环搜索子包
@@ -50,9 +46,13 @@ public class ClassInPackage {
 
     /**
      * 在package对应的路径下找到所有的class
+     * @param packageName
+     * @param filePath
+     * @param recursive
+     * @param classes
      */
     public static void findClassInPackageByFile(String packageName, String filePath, final boolean recursive,
-                                                List<Class<?>> clazzs) {
+                                                List<Class<?>> classes) {
         File dir = new File(filePath);
         if (!dir.exists() || !dir.isDirectory()) {
             return;
@@ -69,11 +69,13 @@ public class ClassInPackage {
 
         for (File file : dirFiles) {
             if (file.isDirectory()) {
-                findClassInPackageByFile(packageName + "." + file.getName(), file.getAbsolutePath(), recursive, clazzs);
+                String package_name = new StringBuffer(packageName).append(".").append(file.getName()).toString();
+                findClassInPackageByFile(package_name, file.getAbsolutePath(), recursive, classes);
             } else {
                 String className = file.getName().substring(0, file.getName().length() - 6);
                 try {
-                    clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(packageName + "." + className));
+                    String name = new StringBuffer(packageName).append(".").append(className).toString();
+                    classes.add(Thread.currentThread().getContextClassLoader().loadClass(name));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

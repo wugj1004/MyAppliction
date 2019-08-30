@@ -16,6 +16,7 @@ import java.lang.annotation.Target;
  * version:
  */
 
+@Deprecated
 @Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
